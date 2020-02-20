@@ -22,25 +22,27 @@ class Frame extends JFrame {
         // Action listener that doesnt work the way I want it to
         Shuffle.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Pressed");
                 // Create a new JPanel object
                 remove(ShuffledDeck); // Should remove previous panel
                 ShuffledDeck = new Deck();
 
+                ShuffledDeck.shuffleDeck();
+
+                ShuffledDeck.displayDeck();
+
                 // Add components to frame and redraw
                 add(ShuffledDeck, BorderLayout.CENTER);
-                // pack(); // idk if I need this
-                setSize(200, 200);
+                pack(); // idk if I need this
+                setSize(750, 750);
             }
         });
 
         // Set frame attributes
         setTitle("Deck-O-Cards");
         setSize(200,200);
-        setBackground(Color.GRAY);
         setResizable(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+        // setLocationRelativeTo(null);
     }
 
     public static void main(String[] args){

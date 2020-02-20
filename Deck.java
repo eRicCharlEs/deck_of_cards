@@ -9,8 +9,8 @@ class Deck extends JPanel{
 
     // Private 
     private ArrayList<Card> deckOCards = new ArrayList<Card>();
-    // private Card [] deckOCards = new Card[52];
     private Card card;
+    private int deck_size = 52;
 
     // Get path to each card
     File folder = new File("./Cards");
@@ -21,7 +21,7 @@ class Deck extends JPanel{
         // Deck attributes
         setLayout(new FlowLayout(FlowLayout.CENTER));
         setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-        setBackground(Color.GRAY);
+        setBackground(Color.WHITE);
 
         // Build an ordered deck
         buildDeck();
@@ -45,6 +45,31 @@ class Deck extends JPanel{
         // Build ArrayList of Card objects
         for(int i = 0; i < files.length; i++){
             deckOCards.add(new Card(files[i]));
+        }
+    }
+
+    public void shuffleDeck() {
+        Random rando = new Random();
+
+        for (int i = 0; i < deck_size; i++) {
+            int r = i + rando.nextInt(deck_size - i);
+
+            // Swap 
+            card = new Card(); // Temporary card
+            card = deckOCards.get(r);
+            deckOCards.set(r, deckOCards.get(i));
+            deckOCards.set(i, card);
+        }
+    }
+
+    public void displayDeck() {
+        setLayout(new FlowLayout(FlowLayout.CENTER));
+        setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+        setBackground(Color.WHITE);
+
+        // Build ArrayList of Card objects
+        for(int i = 0; i < deck_size; i++){
+            add(deckOCards.get(i));
         }
     }
 }
