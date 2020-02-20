@@ -2,21 +2,22 @@ import java.awt.*;
 import javax.swing.*;
 import java.io.*;
 import java.util.*;
-
-// Deck GUI class where the deck is built and 
-// the shuffle process happens
+/**
+ * Deck class extends JPanel to create panel containing Card objects
+ */
 class Deck extends JPanel{
 
-    // Private 
+    /**
+     * Private Members
+     */
     private ArrayList<Card> deckOCards = new ArrayList<Card>();
     private Card card;
     private int deck_size = 52;
-
-    // Get path to each card
-    File folder = new File("./Cards");
+    private File folder = new File("./Cards"); // Establish connection with image folder for reading
     
-
-    // Constructor: set the initial panel
+    /**
+     * Constructor
+     */
     public Deck(){
         // Deck attributes
         setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -31,7 +32,9 @@ class Deck extends JPanel{
         add(card);
     }
 
-    // Build ordered deck of cards
+    /**
+     * Adds 52 Card objects to global ArrayList
+     */
     public void buildDeck(){
         // Create list of file names associated with card images
         // because I'm using mac, we need to omit .DC_Store
@@ -48,6 +51,9 @@ class Deck extends JPanel{
         }
     }
 
+    /**
+     * Shuffles ArrayList of Card objects
+     */
     public void shuffleDeck() {
         Random rando = new Random();
 
@@ -62,6 +68,9 @@ class Deck extends JPanel{
         }
     }
 
+    /**
+     * Displays the ArrayList
+     */
     public void displayDeck() {
         setLayout(new FlowLayout(FlowLayout.CENTER));
         setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
