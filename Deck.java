@@ -30,6 +30,7 @@ class Deck extends JPanel{
         // Add the default Card to the panel
         card = new Card();
         add(card);
+        // This is just for showlo
     }
 
     /**
